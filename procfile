@@ -1,1 +1,1 @@
-web: gunicorn Happiness.wsgi -- log-file -
+web: gunicorn Happiness.wsgi --log-file -
