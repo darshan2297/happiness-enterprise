@@ -1,1 +1,1 @@
-web: gunicorn Happiness.wsgi --log-file -
+web: gunicorn Happiness.wsgi --log-file --timeout 15 --keep-alive 5 --log-level debug
