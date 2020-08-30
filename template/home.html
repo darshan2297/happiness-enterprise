@@ -3,14 +3,28 @@
 {% include "master.html" %}
 
 <title>{% block title %} Home {% endblock title %}</title>
-{% block css %} {% endblock css %}
+{% block css %} 
+<style>
+.page-item.active .page-link  {
+  background-color: black !important;
+  border: none;
+}
+.page-link{
+  color: black;
+}
+.page-link:hover{
+  background-color: black;
+  color: white;
+}
+</style>
+{% endblock css %}
 {% block content %}
 
   <!-- Page Content -->
   <div class="container mt-3">
     <div>
         <div class="card mb-3">
-            <img src="\static\images\notes.jpg" class="card-img-top" alt="...">
+            <img src="\static\images\notes1.jpg" class="card-img-top" alt="...">
           </div>
     </div>
     <div class="row mt-4">
@@ -26,14 +40,11 @@
                 <a href="{% url 'shop:product_view' i.id %}"><img class="card-img-top" src={{i.images1.url}} alt=""></a>
                 <div class="card-body">
                     <h5 class="card-title">
-                    <a href="{% url 'shop:product_view' i.id %}">{{i.product_name}}</a>
+                    <a href="{% url 'shop:product_view' i.id %}" style="text-decoration: none;">{{i.product_name}}</a>
                     </h5>
                     <h6>Wholesale Price: {{i.price}}/-</h6>
-                    <h6 class="text-success"><b class="">Order On: </b><i class="fa fa-whatsapp"></i>+91 63517 14455</h6>
-                    <h6 class="text-dark "><b class="">Bulk Order Price Ask On: </b></h6>
-
-                    <h6 class="text-danger "><i class="fa fa-whatsapp"></i> +91 63517 14455</h6>
-                    <!-- <h5>Stock Avialable: {{i.stock}}</h5> -->
+                    <h6 class="text-success"><b class="">Order On: </b><i class="fa fa-whatsapp"></i><a href="whatsapp://tel:+916351714455" class="text-success">+91 63517 14455</a></h6>
+                  <h6 class="text-danger"><b>Buy Hurry Up!!!!</b> <img src="/static/images/new06p.gif"></h6>
                 </div>
                 </div>
             {% endif %}
@@ -51,26 +62,48 @@
   </div>
   <!-- /.container -->
 
-  {% if product_list.has_other_pages %}
-  <ul class="pagination">
-    {% if product_list.has_previous %}
-      <li><a href="?page={{ product_list.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&laquo;</span></li>
-    {% endif %}
-    {% for i in product_list.paginator.page_range %}
-      {% if product_list.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+{% if product_list.has_other_pages %}
+  <nav aria-label="Page navigation example mb-5">
+    <ul class="pagination justify-content-center">
+      {% if product_list.has_previous %}
+      <li class="page-item">
+        <a class="page-link " href="?page={{ product_list.previous_page_number }}" aria-label="Previous">
+          <span aria-hidden="true">Previous</span>
+        </a>
+      </li>
       {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+        <li class="page-item disabled">
+          <a class="page-link " aria-label="Previous">
+            <span>Previous</span>
+          </a>
+        </li>
       {% endif %}
-    {% endfor %}
-    {% if product_list.has_next %}
-      <li><a href="?page={{ product_list.next_page_number }}">&raquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&raquo;</span></li>
-    {% endif %}
-  </ul>
+      {% for i in product_list.paginator.page_range %}
+      {% if product_list.number == i %}
+        <li class="page-item active">
+          <a class="page-link" href="#">
+            <span class="box">{{ i }} <span class="sr-only" >(current)</span></span>
+          </a>
+        </li>
+      {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ i }}">{{ i }}
+            </a>
+          </li>
+      {% endif %}
+      {% endfor %}
+
+      {% if product_list.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ product_list.next_page_number }}"><span>Next</span></a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="disabled page-link">Next</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
 {% endif %}
 
 {% endblock content %}

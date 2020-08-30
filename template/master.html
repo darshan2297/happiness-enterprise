@@ -6,13 +6,21 @@
     <title>{% block title %} {% endblock title %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            border-radius: 0px !important;
+        }
+        nav a:hover{
+         color: #007bff !important;
+        }
+    </style>
     {% block css %} {% endblock css %}
 </head>
 <body>
     <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: black !important ;">
 <div class="container">
-    <a class="navbar-brand" href="/">Happiness Enterprise</a>
+    <a class="navbar-brand" href="/"><i class="fa fa-smile-o" aria-hidden="true"></i> Happiness Enterprise <i class="fa fa-smile-o" aria-hidden="true"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>

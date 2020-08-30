@@ -58,21 +58,21 @@
         </div>
          <div class="col-lg-7">
         <div class="card">
-            <div class="card-header">
-                <h4>{{i.product_name}}</h4>
+            <div class="card-header" style="background-color:black;">
+                <h4 class="text-white">{{i.product_name}}</h4>
               </div>
           <div class="card-body">
             <h4>Wholesale Price: {{i.price}}/-</h4>
             <p class="card-text">{{i.title}}</p>
-            <h6 class="text-success"><b class="">Order On: </b><i class="fa fa-whatsapp"></i>+91 63517 14455</h6>
-            <!-- <h5>Stock Avialable: {{i.stock}}</h5> -->
+            <h6 class="text-success"><b class="">Order On: </b><i class="fa fa-whatsapp"></i><a href="whatsapp://tel:+916351714455" class="text-success"> +91 63517 14455 </a></h6>
+            <h6 class="text-danger"><b>Buy Hurry Up!!!!</b> <img src="/static/images/new15_a.gif"></h6>
           </div>
         </div>
         <!-- /.card -->
 
         <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-            <b>Product Description</b>
+          <div class="card-header" style="background-color:black;">
+            <b class="text-white">Product Description</b>
           </div>
           <div class="card-body">
             <p>{% autoescape off %}{{ i.description }}{% endautoescape %}</p>
