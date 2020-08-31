@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import timedelta,datetime
 
 # Create your models here.
 class product(models.Model):
@@ -18,7 +19,7 @@ class product(models.Model):
     price = models.IntegerField()
     stock = models.IntegerField()
     active = models.BooleanField(default=True)
-    created_date = models.DateTimeField(auto_now=True)
+    created_date = models.DateTimeField(default=datetime.today())
 
     def __str__(self):
         return self.product_name

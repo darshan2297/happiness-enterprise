@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class homepageview(View):
     def get(self,request,*args,**kwargs):
-        products = product.objects.all()
+        products = product.objects.all().order_by('-created_date')
 
         page = request.GET.get('page', 1)
         paginator = Paginator(products,40)
