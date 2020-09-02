@@ -40,7 +40,11 @@
                     </h5>
                     <h6>Wholesale Price: {{i.price}}/-</h6>
                     <h6 class="text-success"><b class="">Order On: </b><i class="fa fa-whatsapp"></i><a href="whatsapp://tel:+916351714455" class="text-success">+91 63517 14455</a></h6>
-                  <h6 class="text-danger"><b>Buy Hurry Up!!!!</b> <img src="/static/images/new06p.gif"></h6>
+                    {% if i.created_date.date == timing %}
+                      <h6 class="text-danger"><b>Buy Hurry Up!!!!</b> <img src="/static/images/new06p.gif"></h6>
+                    {% else %}
+                      <h6 class="text-danger"><b>Buy Hurry Up!!!!</b></h6>
+                    {% endif %}
                 </div>
                 </div>
             {% endif %}

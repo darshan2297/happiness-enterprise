@@ -2,13 +2,16 @@ from django.shortcuts import render
 from django.views.generic import View
 from .models import product
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import timedelta,date
+
 
 # Create your views here.
 
 class homepageview(View):
     def get(self,request,*args,**kwargs):
         products = product.objects.all().order_by('-created_date')
-
+        timing = date.today()
+        print(timing)
         page = request.GET.get('page', 1)
         paginator = Paginator(products,40)
         try:
@@ -17,7 +20,7 @@ class homepageview(View):
             product_list = paginator.page(1)
         except EmptyPage:
             product_list = paginator.page(paginator.num_pages)
-        return render(request ,"home.html",{"product_list":product_list})
+        return render(request ,"home.html",{"product_list":product_list,"timing":timing})
         
 class product_view(View):
     def get(self,request,pk,*args,**kwargs):
